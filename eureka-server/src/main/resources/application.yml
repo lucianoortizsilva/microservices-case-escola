@@ -2,7 +2,7 @@ server:
   port: 8761
 eureka:
   client:
-    registerWithEureka: false
+    registerWithEureka: false #Estamos dizendo ao cliente Eureka integrado para não se registrar com 'ele mesmo' porque nosso aplicativo deve estar atuando como um servidor
     fetchRegistry: false
   server:
    renewalPercentThreshold: 0.33

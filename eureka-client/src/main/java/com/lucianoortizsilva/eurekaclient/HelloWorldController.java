@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public interface HelloWorldController {
 
-	@RequestMapping("/test")
+	@RequestMapping("/greeting")
 	String getTest();
 
 }
