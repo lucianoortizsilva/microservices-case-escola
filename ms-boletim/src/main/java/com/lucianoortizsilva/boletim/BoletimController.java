@@ -3,22 +3,16 @@ package com.lucianoortizsilva.boletim;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lucianoortizsilva.boletim.clients.AlunoServiceClient;
-import com.lucianoortizsilva.commom.Aluno;
 import com.lucianoortizsilva.commom.Boletim;
 
 @RestController
 @RequestMapping(value = "/boletins")
 public class BoletimController {
-
-	@Autowired
-	private AlunoServiceClient alunoServiceClient;
 
 	private static List<Boletim> boletins = new ArrayList<>();
 
@@ -32,12 +26,7 @@ public class BoletimController {
 
 	@GetMapping(value = "/aluno/{id}")
 	public List<Boletim> getById(@PathVariable(name = "id") final Long id) {
-		final Aluno aluno = this.alunoServiceClient.getAluno(id);
-		if (aluno == null) {
-			return new ArrayList<>();
-		} else {
-			return findBy(id);
-		}
+		return findBy(id);
 	}
 
 	private List<Boletim> findBy(final Long idAluno) {

@@ -15,8 +15,8 @@ public class Boletim {
 	private Long idAluno;
 	private String ano;
 	private String semestre;
-	private Double notaMatematica;
-	private Double notaPortugues;
-	private Double notaQuimica;
+	private double notaMatematica;
+	private double notaPortugues;
+	private double notaQuimica;
 
 }

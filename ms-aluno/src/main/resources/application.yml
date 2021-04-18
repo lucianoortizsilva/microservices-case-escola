@@ -2,16 +2,8 @@ spring:
   application:
     name: ms-aluno
 server:
-  port: 8080
+  port: 8081
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 1800000
-        loggerLevel: basic
