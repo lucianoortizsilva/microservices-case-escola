@@ -1,9 +1,9 @@
+spring:
+  application:
+    name: eureka-server
 server:
   port: 8761
 eureka:
   client:
-    registerWithEureka: false #Estamos dizendo ao cliente Eureka integrado para não se registrar com 'ele mesmo' porque nosso aplicativo deve estar atuando como um servidor
+    registerWithEureka: false
     fetchRegistry: false
-  server:
-   renewalPercentThreshold: 0.33
-   #enableSelfPreservation: false

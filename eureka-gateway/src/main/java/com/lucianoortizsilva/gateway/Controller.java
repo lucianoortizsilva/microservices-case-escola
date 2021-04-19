@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +16,15 @@ import com.lucianoortizsilva.gateway.client.AlunoClient;
 import com.lucianoortizsilva.gateway.client.BoletimClient;
 import com.lucianoortizsilva.gateway.response.ResponseBoletim;
 
+import lombok.extern.log4j.Log4j2;
+
+
+
+@Log4j2
 @RestController
 public class Controller {
 
+	@Lazy
 	@Autowired
 	private AlunoClient alunoClient;
 
@@ -26,6 +33,8 @@ public class Controller {
 
 	@GetMapping(value = "/boletins/aluno/{id}")
 	public ResponseEntity<List<ResponseBoletim>> getBoletim(@PathVariable(name = "id") final Long idAluno) {
+		log.info("Pesquisando /boletins/aluno/{id} " + idAluno);
+		log.info("alunoClient: " + alunoClient);
 		final Aluno aluno = this.alunoClient.getAluno(idAluno);
 		if (aluno == null) {
 			return ResponseEntity.notFound().build();

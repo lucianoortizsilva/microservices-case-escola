@@ -12,7 +12,7 @@
 	<groupId>com.lucianoortizsilva.gateway</groupId>
 	<artifactId>eureka-gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>eureka-client</name>
+	<name>eureka-gateway</name>
 	<description>Spring Cloud Netflix Eureka</description>
 
 	<properties>
@@ -73,6 +73,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>eureka-gateway</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
