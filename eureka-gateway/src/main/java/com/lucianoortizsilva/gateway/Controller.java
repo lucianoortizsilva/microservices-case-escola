@@ -35,17 +35,22 @@ public class Controller {
 	public ResponseEntity<List<ResponseBoletim>> getBoletim(@PathVariable(name = "id") final Long idAluno) {
 		log.info("Pesquisando /boletins/aluno/{id} " + idAluno);
 		log.info("alunoClient: " + alunoClient);
-		final Aluno aluno = this.alunoClient.getAluno(idAluno);
-		if (aluno == null) {
-			return ResponseEntity.notFound().build();
-		} else {
-			final List<Boletim> boletins = this.boletimClient.getById(idAluno);
-			if (boletins.isEmpty()) {
+		try {
+			final Aluno aluno = this.alunoClient.getAluno(idAluno);
+			if (aluno == null) {
 				return ResponseEntity.notFound().build();
 			} else {
-				return ResponseEntity.ok().body(getResponseBoletimFrom(aluno, boletins));
+				final List<Boletim> boletins = this.boletimClient.getById(idAluno);
+				if (boletins.isEmpty()) {
+					return ResponseEntity.notFound().build();
+				} else {
+					return ResponseEntity.ok().body(getResponseBoletimFrom(aluno, boletins));
+				}
 			}
+		} catch (final Exception e) {
+			log.error("Erro: ", e);
 		}
+		return null;
 	}
 
 	private List<ResponseBoletim> getResponseBoletimFrom(final Aluno aluno, final List<Boletim> boletins) {

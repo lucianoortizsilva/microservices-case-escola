@@ -1,9 +1,10 @@
 version: '3.3'
 services: 
-  
+
   eureka-server:
     container_name: eureka-server-app
-    image: eureka-server-app:latest
+    image: eureka-server-app:v1
+    restart: on-failure
     build:
       context: ./eureka-server/
       dockerfile: Dockerfile
@@ -12,11 +13,11 @@ services:
     ports:
       - "8761:8761"
     networks:
-      - network-eureka  
-  
+      - network-eureka
+        
   ms-boletim:
     container_name: ms-boletim-app
-    image: ms-boletim-app:latest
+    image: ms-boletim-app:v1
     restart: on-failure
     depends_on:
       - eureka-server
@@ -25,12 +26,14 @@ services:
       dockerfile: Dockerfile
     volumes:
       - /data/ms-boletim
+    ports:
+      - "8082:8082"
     networks:
       - network-eureka  
 
   ms-aluno:
     container_name: ms-aluno-app
-    image: ms-aluno-app:latest
+    image: ms-aluno-app:v1
     restart: on-failure
     depends_on:
       - eureka-server
@@ -39,12 +42,14 @@ services:
       dockerfile: Dockerfile
     volumes:
       - /data/ms-aluno
+    ports:
+      - "8081:8081"  
     networks:
       - network-eureka
       
   eureka-gateway:
     container_name: eureka-gateway-app
-    image: eureka-gateway-app:latest
+    image: eureka-gateway-app:v1
     restart: on-failure
     depends_on:
       - eureka-server
