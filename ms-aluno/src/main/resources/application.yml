@@ -2,10 +2,12 @@ spring:
   application:
     name: ms-aluno
 server:
-  port: 8081
+  port: ${PORT:8081}
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
-    registerWithEureka: true
     fetchRegistry: true
+    registerWithEureka: true
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+      defaultZone: http://eureka-server:8761/eureka/

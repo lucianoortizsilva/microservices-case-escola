@@ -1,67 +1,64 @@
-version: '3.3'
+version: '3.7'
 services: 
 
   eureka-server:
     container_name: eureka-server-app
     image: eureka-server-app:v1
-    restart: on-failure
     build:
       context: ./eureka-server/
       dockerfile: Dockerfile
-    volumes:
-      - /data/eureka-server
     ports:
       - "8761:8761"
-    networks:
-      - network-eureka
-        
+    hostname: eureka-server  
+    tty:
+      true
+    restart:
+      unless-stopped
+
   ms-boletim:
     container_name: ms-boletim-app
     image: ms-boletim-app:v1
-    restart: on-failure
-    depends_on:
-      - eureka-server
     build:
       context: ./ms-boletim/
       dockerfile: Dockerfile
-    volumes:
-      - /data/ms-boletim
     ports:
       - "8082:8082"
-    networks:
-      - network-eureka  
+    hostname: ms-boletim
+    depends_on:
+      - eureka-server
+    tty:
+      true
+    restart:
+      unless-stopped
 
   ms-aluno:
     container_name: ms-aluno-app
     image: ms-aluno-app:v1
-    restart: on-failure
-    depends_on:
-      - eureka-server
     build:
       context: ./ms-aluno/
       dockerfile: Dockerfile
-    volumes:
-      - /data/ms-aluno
     ports:
       - "8081:8081"  
-    networks:
-      - network-eureka
+    hostname: ms-aluno
+    depends_on:
+      - eureka-server
+    tty:
+      true
+    restart:
+      unless-stopped
       
-  eureka-gateway:
+  ms-gateway:
     container_name: ms-gateway-app
     image: ms-gateway-app:v1
-    restart: on-failure
-    depends_on:
-      - ms-gateway
     build:
       context: ./ms-gateway/
       dockerfile: Dockerfile
-    volumes:
-      - /data/ms-gateway
     ports:
       - "8080:8080"
-    networks:
-      - network-eureka            
-      
-networks:
-  network-eureka: 
+    hostname: ms-gateway
+    depends_on:
+      - eureka-server
+    tty:
+      true
+    restart:
+      unless-stopped

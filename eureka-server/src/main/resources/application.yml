@@ -2,8 +2,10 @@ spring:
   application:
     name: eureka-server
 server:
-  port: 8761
+  port: ${PORT:8761}
 eureka:
+  instance:
+    hostname: localhost
   client:
     registerWithEureka: false #Diz ao Spring para não se registrar no serviço de descoberta.
     fetchRegistry: false #Indica que esta instância não deve buscar informações de descoberta do servidor.
