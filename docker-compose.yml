@@ -48,16 +48,16 @@ services:
       - network-eureka
       
   eureka-gateway:
-    container_name: eureka-gateway-app
-    image: eureka-gateway-app:v1
+    container_name: ms-gateway-app
+    image: ms-gateway-app:v1
     restart: on-failure
     depends_on:
-      - eureka-server
+      - ms-gateway
     build:
-      context: ./eureka-gateway/
+      context: ./ms-gateway/
       dockerfile: Dockerfile
     volumes:
-      - /data/eureka-gateway
+      - /data/ms-gateway
     ports:
       - "8080:8080"
     networks:
