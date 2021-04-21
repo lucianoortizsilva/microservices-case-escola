@@ -3,29 +3,38 @@ services:
 
   eureka-server:
     container_name: eureka-server-app
-    image: eureka-server-app:v1
+    image: eureka-server-app:latest
     build:
-      context: ./eureka-server/
+      context: ./eureka-server
       dockerfile: Dockerfile
     ports:
       - "8761:8761"
+    environment:
+      ENV: prod
     hostname: eureka-server  
     tty:
       true
     restart:
       unless-stopped
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:8761"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
 
   ms-boletim:
     container_name: ms-boletim-app
-    image: ms-boletim-app:v1
+    image: ms-boletim-app:latest
     build:
-      context: ./ms-boletim/
+      context: ./ms-boletim
       dockerfile: Dockerfile
     ports:
       - "8082:8082"
+    environment:
+      ENV: prod
     hostname: ms-boletim
     depends_on:
-      - eureka-server
+      - eureka-server  
     tty:
       true
     restart:
@@ -33,12 +42,14 @@ services:
 
   ms-aluno:
     container_name: ms-aluno-app
-    image: ms-aluno-app:v1
+    image: ms-aluno-app:latest
     build:
-      context: ./ms-aluno/
+      context: ./ms-aluno
       dockerfile: Dockerfile
     ports:
-      - "8081:8081"  
+      - "8081:8081"
+    environment:
+      ENV: prod
     hostname: ms-aluno
     depends_on:
       - eureka-server
@@ -49,12 +60,14 @@ services:
       
   ms-gateway:
     container_name: ms-gateway-app
-    image: ms-gateway-app:v1
+    image: ms-gateway-app:latest
     build:
-      context: ./ms-gateway/
+      context: ./ms-gateway
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    environment:
+      ENV: prod
     hostname: ms-gateway
     depends_on:
       - eureka-server
