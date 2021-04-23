@@ -6,7 +6,7 @@
 	<groupId>com.lucianoortizsilva.boletim</groupId>
 	<artifactId>commom</artifactId>
 	<version>1.0</version>
-	<name>Util</name>
+	<name>Projeto Comum</name>
 	<description>commom</description>
 	
 	<properties>

@@ -7,8 +7,10 @@ services:
     build:
       context: ./eureka-server
       dockerfile: Dockerfile
+    expose: 
+      - "8761"  
     ports:
-      - "8761"
+      - "8761:8761"
     environment:
       ENV: prod
     tty:
@@ -26,6 +28,7 @@ services:
       - "8082"
     environment:
       ENV: prod
+    entrypoint: /opt/bin/entrypointBoletim.sh
     depends_on:
       - eureka-server  
     tty:
@@ -43,6 +46,7 @@ services:
       - "8081"
     environment:
       ENV: prod
+    entrypoint: /opt/bin/entrypointAluno.sh  
     depends_on:
       - eureka-server
     tty:
@@ -60,6 +64,7 @@ services:
       - "8080:8080"
     environment:
       ENV: prod
+    entrypoint: /opt/bin/entrypointGateway.sh
     depends_on:
       - eureka-server
     tty:
