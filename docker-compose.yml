@@ -7,8 +7,6 @@ services:
     build:
       context: ./eureka-server
       dockerfile: Dockerfile
-    expose: 
-      - "8761"  
     ports:
       - "8761:8761"
     environment:
@@ -17,7 +15,25 @@ services:
       true
     restart:
       unless-stopped
-
+  
+  ms-aluno:
+    container_name: ms-aluno-app
+    image: ms-aluno-app:latest
+    build:
+      context: ./ms-aluno
+      dockerfile: Dockerfile
+    ports:
+      - "8081"
+    environment:
+      ENV: prod
+    entrypoint: /opt/bin/entrypointAluno.sh  
+    depends_on:
+      - eureka-server
+    tty:
+      true
+    restart:
+      unless-stopped
+      
   ms-boletim:
     container_name: ms-boletim-app
     image: ms-boletim-app:latest
@@ -36,19 +52,19 @@ services:
     restart:
       unless-stopped
 
-  ms-aluno:
-    container_name: ms-aluno-app
-    image: ms-aluno-app:latest
+  ms-professor:
+    container_name: ms-professor-app
+    image: ms-professor-app:latest
     build:
-      context: ./ms-aluno
+      context: ./ms-professor
       dockerfile: Dockerfile
     ports:
-      - "8081"
+      - "8083"
     environment:
       ENV: prod
-    entrypoint: /opt/bin/entrypointAluno.sh  
+    entrypoint: /opt/bin/entrypointProfessor.sh
     depends_on:
-      - eureka-server
+      - eureka-server  
     tty:
       true
     restart:

@@ -9,11 +9,11 @@
 		<version>2.4.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.lucianoortizsilva.boletim</groupId>
-	<artifactId>ms-boletim</artifactId>
+	<groupId>com.lucianoortizsilva.professor</groupId>
+	<artifactId>ms-professor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Micro Servico de Boletim</name>
-	<description>Micro Servico de Boletim</description>
+	<name>Micro Servico de Professor</name>
+	<description>Micro Servico de Professor</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -64,7 +64,7 @@
 	</dependencyManagement>
 
 	<build>
-		<finalName>ms-boletim</finalName>
+		<finalName>ms-professor</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
