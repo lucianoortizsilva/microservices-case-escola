@@ -1,6 +1,6 @@
 package com.lucianoortizsilva.commom;
 
-import java.util.Set;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,9 +11,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Boletim {
+public class Nota {
 
 	private Long idAluno;
-	private Set<Nota> notas;
+
+	private Long idProfessor;
+
+	private Disciplina disciplina;
+
+	private String valor;
+
+	private LocalDate dtLancamento;
 
 }
