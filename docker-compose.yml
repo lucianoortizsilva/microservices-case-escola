@@ -15,7 +15,7 @@ services:
       true
     restart:
       unless-stopped
-  
+
   ms-aluno:
     container_name: ms-aluno-app
     image: ms-aluno-app:latest
@@ -33,18 +33,18 @@ services:
       true
     restart:
       unless-stopped
-      
-  ms-boletim:
-    container_name: ms-boletim-app
-    image: ms-boletim-app:latest
+
+  ms-avaliacao:
+    container_name: ms-avaliacao-app
+    image: ms-avaliacao-app:latest
     build:
-      context: ./ms-boletim
+      context: ./ms-avaliacao
       dockerfile: Dockerfile
     ports:
       - "8082"
     environment:
       ENV: prod
-    entrypoint: /opt/bin/entrypointBoletim.sh
+    entrypoint: /opt/bin/entrypointAvaliacao.sh
     depends_on:
       - eureka-server  
     tty:
@@ -69,18 +69,18 @@ services:
       true
     restart:
       unless-stopped
-      
+
   ms-gateway:
-    container_name: ms-gateway-app
-    image: ms-gateway-app:latest
+    container_name: escola-gateway-app
+    image: escola-gateway-app:latest
     build:
-      context: ./ms-gateway
+      context: ./escola-gateway
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
     environment:
       ENV: prod
-    entrypoint: /opt/bin/entrypointGateway.sh
+    entrypoint: /opt/bin/entrypointEscolaGateway.sh
     depends_on:
       - eureka-server
     tty:
