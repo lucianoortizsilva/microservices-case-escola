@@ -11,7 +11,7 @@ Os serviços criados, não se comunicam entre si. Para isso foi utilizado um ser
 Todos os serviços foram configurados com Dockerfile. Além disso, na raiz no projeto foi criado um arquivo docker-compose.yml, para facilitar buld e deploy da aplicação.
 
 ### Arquitetura
-![](https://github.com/lucianoortizsilva/microservices-case-escola/blob/static/github/arquitetura.png)
+![](https://github.com/lucianoortizsilva/microservices-case-escola/blob/main/static/github/arquitetura.png?raw=true)
 
 ### Como rodar ?
 - Realize o build em todos os projeto, executando **`mvn clean package`**
