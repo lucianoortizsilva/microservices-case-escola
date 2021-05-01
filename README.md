@@ -5,9 +5,9 @@
 - Docker
 
 ### O que é ?
-Um simples caso de uso, que representa uma escola qualquer. 
-Para isso foi utilizado conceito de micro-serviços, onde pequenos serviços registram-se em um eureka-server.
-Os serviços criados, não se comunicam entre si. Para isso foi utilizado um serviço que serve como um gateway, é esse serviço que é responsável por se comunicar com todos os outros, utilizando [@FeignClient](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html).
+Um simples caso de uso, que representa uma escola qualquer. \
+Para isso foi utilizado conceito de micro-serviços, onde pequenos serviços registram-se em um eureka-server.\
+Os serviços criados, não se comunicam entre si. Para isso foi utilizado um serviço que serve como um gateway, é esse serviço que é responsável por se comunicar com todos os outros, utilizando [@FeignClient](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html).\
 Todos os serviços foram configurados com Dockerfile. Além disso, na raiz no projeto foi criado um arquivo docker-compose.yml, para facilitar buld e deploy da aplicação.
 
 ### Arquitetura
