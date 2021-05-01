@@ -70,7 +70,7 @@ services:
     restart:
       unless-stopped
 
-  ms-gateway:
+  escola-gateway:
     container_name: escola-gateway-app
     image: escola-gateway-app:latest
     build:
