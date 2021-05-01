@@ -18,7 +18,7 @@ Todos os serviços foram configurados com Dockerfile. Além disso, na raiz no pr
 - Na raiz do projeto, execute **`docker-compose up`**, para criar as imagens e realizar o deploy
 
 ### Como testar ?
-Aguarde a aplicação subir, e registrar todos os serviços no eureka-server.
-Para visulizar se está tudo ok, pode acessar: **`http://localhost:8761`**
-Para testar os serviços, realize uma chamada ao gateway da aplicação.
+Aguarde a aplicação subir, e registrar todos os serviços no eureka-server.\
+Para visualizar se está tudo ok, pode acessar: **`http://localhost:8761`**\
+Para testar os serviços, realize uma chamada ao gateway da aplicação.\
 > **GET** **`http://localhost:8080/boletins/aluno/1`**
