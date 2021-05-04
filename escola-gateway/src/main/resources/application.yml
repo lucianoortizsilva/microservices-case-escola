@@ -1,6 +1,10 @@
 spring:
   application:
     name: escola-gateway
+  cloud:
+    circuitbreaker:
+      resilience4j:
+        enabled: true
 server:
   port: 8080
 eureka:

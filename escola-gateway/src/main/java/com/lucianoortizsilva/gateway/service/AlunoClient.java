@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.gateway.client;
+package com.lucianoortizsilva.gateway.service;
 
 import java.util.Optional;
 
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.lucianoortizsilva.commom.Aluno;
 
 @FeignClient(name = "ms-aluno")
-public interface AlunoClient {
+interface AlunoClient {
 
 	@GetMapping(value = "/alunos/{id}")
-	public Optional<Aluno> getAluno(@PathVariable("id") final Long in);
+	Optional<Aluno> getAluno(@PathVariable("id") final Long in);
 
 }

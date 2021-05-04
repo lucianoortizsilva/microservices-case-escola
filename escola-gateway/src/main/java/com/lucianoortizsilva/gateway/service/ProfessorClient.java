@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.gateway.client;
+package com.lucianoortizsilva.gateway.service;
 
 import java.util.Optional;
 
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.lucianoortizsilva.commom.Professor;
 
 @FeignClient(name = "ms-professor")
-public interface ProfessorClient {
+interface ProfessorClient {
 
 	@GetMapping(value = "/professores/{id}")
-	public Optional<Professor> getById(@PathVariable(name = "id") final Long idProfessor);
+	Optional<Professor> getById(@PathVariable(name = "id") final Long idProfessor);
 
 }

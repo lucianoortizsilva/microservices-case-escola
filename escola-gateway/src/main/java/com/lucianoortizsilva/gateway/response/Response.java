@@ -17,7 +17,7 @@ public class Response {
 
 	@Getter
 	@Setter
-	private String perido;
+	private String periodo;
 
 	@Getter
 	private Set<Lancamento> lancamentos = new HashSet<>();

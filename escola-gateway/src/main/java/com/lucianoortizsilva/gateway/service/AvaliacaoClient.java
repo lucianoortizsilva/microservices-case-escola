@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.gateway.client;
+package com.lucianoortizsilva.gateway.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.lucianoortizsilva.commom.Avaliacao;
 
 @FeignClient(name = "ms-avaliacao")
-public interface AvaliacaoClient {
+interface AvaliacaoClient {
 
 	@GetMapping(value = "/avaliacoes/aluno/{id}")
-	public Optional<List<Avaliacao>> getById(@PathVariable(name = "id") final Long idAluno);
+	Optional<List<Avaliacao>> getById(@PathVariable(name = "id") final Long idAluno);
 
 }
