@@ -27,7 +27,7 @@ public class CachingConfig extends CachingConfigurerSupport {
 	  ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager() {
 		   @Override
 		   protected Cache createConcurrentMapCache(final String name) {
-		    return new ConcurrentMapCache(name, CacheBuilder.newBuilder().expireAfterAccess(1, TimeUnit.MINUTES).maximumSize(999).build().asMap(), false);
+		    return new ConcurrentMapCache(name, CacheBuilder.newBuilder().expireAfterWrite(1, TimeUnit.MINUTES).maximumSize(999).build().asMap(), false);
 		   }
 	  };
 	  cacheManager.setCacheNames(Arrays.asList(CacheConstant.CACHE_ALUNO, CacheConstant.CACHE_PROFESSOR, CacheConstant.CACHE_AVALIACOES));

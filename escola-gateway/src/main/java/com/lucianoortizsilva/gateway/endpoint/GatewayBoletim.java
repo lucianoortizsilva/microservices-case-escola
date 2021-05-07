@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.lucianoortizsilva.commom.Avaliacao;
+import com.lucianoortizsilva.gateway.endpoint.dto.BoletimResponse;
+import com.lucianoortizsilva.gateway.endpoint.dto.BoletimResponse.Lancamento;
 import com.lucianoortizsilva.gateway.exception.http.ErroInesperadoException;
-import com.lucianoortizsilva.gateway.response.BoletimResponse;
-import com.lucianoortizsilva.gateway.response.BoletimResponse.Lancamento;
 import com.lucianoortizsilva.gateway.service.AlunoService;
 import com.lucianoortizsilva.gateway.service.AvaliacaoService;
 import com.lucianoortizsilva.gateway.service.ProfessorService;

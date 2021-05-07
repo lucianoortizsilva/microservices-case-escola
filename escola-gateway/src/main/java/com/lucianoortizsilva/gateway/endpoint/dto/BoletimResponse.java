@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.gateway.response;
+package com.lucianoortizsilva.gateway.endpoint.dto;
 
 import java.util.HashSet;
 import java.util.Set;
