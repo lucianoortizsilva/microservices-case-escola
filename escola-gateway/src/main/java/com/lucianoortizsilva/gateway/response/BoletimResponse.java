@@ -6,10 +6,11 @@ import java.util.Set;
 import com.lucianoortizsilva.commom.Disciplina;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Response {
+public class BoletimResponse {
 
 	@Getter
 	@Setter
@@ -24,6 +25,7 @@ public class Response {
 
 	@Getter
 	@Setter
+	@Builder
 	@AllArgsConstructor
 	public static class Lancamento {
 		private String nomeProfessor;

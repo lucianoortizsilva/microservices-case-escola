@@ -24,7 +24,7 @@ public class AlunoService {
 	
 	
 	@Cacheable(cacheNames = CacheConstant.CACHE_ALUNO, key = "#idAluno", unless = "#result == null")
-	public String getNomeAlunoBy(final Long idAluno) {
+	public String getNomeAlunoPor(final Long idAluno) {
 		final CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker-aluno");
 		final Optional<Aluno> optional = circuitBreaker.run(() -> this.alunoClient.getAluno(idAluno), throwable -> getAlunoDefault());
 		return optional.get().getNome();
