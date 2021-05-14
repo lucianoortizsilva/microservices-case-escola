@@ -21,4 +21,9 @@ Todos os serviços foram configurados com Dockerfile. Além disso, na raiz no pr
 Aguarde a aplicação subir, e registrar todos os serviços no eureka-server.\
 Para visualizar se está tudo ok, pode acessar: **`http://localhost:8761`**\
 Para testar os serviços, realize uma chamada ao gateway da aplicação.\
+
 > **GET** **`http://localhost:8080/boletins/aluno/1`**
+
+### Bônus
+- Implementação de circuitbreaker, utilizando a biblioteca do `resilience4j` (no projeto escola-gateway)
+- Implementação de cache, utilizando @Cacheable
