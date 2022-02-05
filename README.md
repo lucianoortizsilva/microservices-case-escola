@@ -7,8 +7,20 @@
 ### O que é ?
 Um simples caso de uso, que representa uma escola qualquer. \
 Para isso foi utilizado conceito de micro-serviços, onde pequenos serviços registram-se em um eureka-server.\
-Os serviços criados, não se comunicam entre si. Para isso foi utilizado um serviço que serve como um gateway, é esse serviço que é responsável por se comunicar com todos os outros, utilizando [@FeignClient](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html).\
-Todos os serviços foram configurados com Dockerfile. Além disso, na raiz no projeto foi criado um arquivo docker-compose.yml, para facilitar build e deploy da aplicação.
+Os serviços criados:
+ - escola-gateway (server como ponto de entrada, o único serviço que os clients devem conhecer;
+ - ms-aluno (Micro serviço que armazena dados de aluno e, gera informações do boletim do aluno);
+ - ms-avaliacao (Micro serviço que armazena dados de avaliação de cada aluno, conforme input dos professores);
+ - ms-professor (Micro serviço que armazena dados dos professores);
+
+### Comunicação ? 
+A comunicação entre os serviços dependentes ocorrem via REST, usando [@FeignClient](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html).\
+No exemplo implementado, um client deseja acessar o boletim de um teterminado aluno, onde:\
+ - Todos os serviços se registram no eureka server;
+ - O Client acessa a escola-gateway > **GET** **`http://localhost:8080/alunos/v1/1/boletim`**, que por sua vez acessa o ms-aluno;
+ - Para montar o boletim, o ms-aluno acessa as suas 2 dependências: ms-professor e ms-avaliacao;  
+Todos os serviços foram configurados com Dockerfile. 
+Além disso, na raiz no projeto foi criado um arquivo docker-compose.yml, para facilitar build e deploy da aplicação.
 
 ### Arquitetura
 ![](https://github.com/lucianoortizsilva/microservices-case-escola/blob/main/static/github/arquitetura.png?raw=true)
@@ -22,8 +34,8 @@ Aguarde a aplicação subir, e registrar todos os serviços no eureka-server.\
 Para visualizar se está tudo ok, pode acessar: **`http://localhost:8761`**\
 Para testar os serviços, realize uma chamada ao gateway da aplicação.\
 
-> **GET** **`http://localhost:8080/boletins/aluno/1`**
+> **GET** **`http://localhost:8080/alunos/v1/1`**
 
 ### Bônus
-- Implementação de circuitbreaker, utilizando a biblioteca do `resilience4j` (no projeto escola-gateway)
+- Implementação de circuitbreaker ao chamar as dependências do ms-aluno, utilizando a biblioteca do `resilience4j`
 - Implementação de cache, utilizando @Cacheable
