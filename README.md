@@ -15,15 +15,15 @@ Os serviços criados:
 
 ### Comunicação ? 
 A comunicação entre os serviços dependentes ocorrem via REST, usando [@FeignClient](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html).\
-No exemplo implementado, um client deseja acessar o boletim de um teterminado aluno, onde:\
+No exemplo implementado, um client deseja acessar o boletim de um teterminado aluno, onde:
  - Todos os serviços se registram no eureka server;
- - O Client acessa a escola-gateway > **GET** **`http://localhost:8080/alunos/v1/1/boletim`**, que por sua vez acessa o ms-aluno;
+ - O Client acessa a escola-gateway, que por sua vez acessa o ms-aluno;
  - Para montar o boletim, o ms-aluno acessa as suas 2 dependências: ms-professor e ms-avaliacao;  
 Todos os serviços foram configurados com Dockerfile. 
 Além disso, na raiz no projeto foi criado um arquivo docker-compose.yml, para facilitar build e deploy da aplicação.
 
 ### Arquitetura
-![](https://github.com/lucianoortizsilva/microservices-case-escola/blob/main/static/github/arquitetura.png?raw=true)
+![](https://github.com/lucianoortizsilva/microservices-case-escola/blob/main/static/github/img-arquitetura.png?raw=true)
 
 ### Como rodar ?
 - Realize o build em todos os projeto, executando **`mvn clean package`**
