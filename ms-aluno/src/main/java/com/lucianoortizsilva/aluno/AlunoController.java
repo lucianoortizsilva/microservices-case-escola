@@ -1,39 +1,35 @@
 package com.lucianoortizsilva.aluno;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lucianoortizsilva.commom.Aluno;
+import com.lucianoortizsilva.commom.Boletim;
 
 @RestController
 @RequestMapping(value = "/alunos")
 public class AlunoController {
 
-	private static List<Aluno> alunos = new ArrayList<>();
+	@Autowired
+	private AlunoService alunoService;
 
-	static {
-		alunos.add(new Aluno(1L, "Luciano"));
-		alunos.add(new Aluno(2L, "Mariana"));
-		alunos.add(new Aluno(3L, "Vanessa"));
-	}
-
-	
-	
+	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}")
-	public Optional<Aluno> getById(@PathVariable(name = "id") final Long id) {
-		return Optional.of(findBy(id));
+	public Aluno getById(@PathVariable(name = "id") final Long id) {
+		return alunoService.getAlunoById(id);
 	}
 
-	
-	
-	private Aluno findBy(final Long id) {
-		return alunos.stream().filter(aluno -> aluno.getId().equals(id)).findFirst().orElse(null);
+	@ResponseStatus(HttpStatus.OK)
+	@GetMapping(value = "/{id}/boletim")
+	public List<Boletim> getBoletimByAluno(@PathVariable(name = "id") final Long id) {
+		return alunoService.getBoletimByAluno(id);
 	}
 
 }

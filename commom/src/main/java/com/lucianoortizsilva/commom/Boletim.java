@@ -1,16 +1,15 @@
-package com.lucianoortizsilva.gateway.endpoint.dto;
+package com.lucianoortizsilva.commom;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.lucianoortizsilva.commom.Disciplina;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-public class BoletimResponse {
+public class Boletim {
 
 	@Getter
 	@Setter
@@ -26,6 +25,7 @@ public class BoletimResponse {
 	@Getter
 	@Setter
 	@Builder
+	@NoArgsConstructor
 	@AllArgsConstructor
 	public static class Lancamento {
 		private String nomeProfessor;

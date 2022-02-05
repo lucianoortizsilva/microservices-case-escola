@@ -1,4 +1,4 @@
-package com.lucianoortizsilva.gateway.config;
+package com.lucianoortizsilva.aluno.config;
 
 import java.time.Duration;
 

@@ -15,6 +15,6 @@ public class Avaliacao {
 	private Long idProfessor;
 	private Disciplina disciplina;
 	private String nota;
-	private String periodo;
+	private String trimestre;
 
 }
