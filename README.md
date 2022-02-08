@@ -38,5 +38,4 @@ Para testar os serviços, realize uma chamada ao gateway da aplicação.
 > **Via Browser** **`http://localhost:9411/zipkin`**
 
 ### Bônus
-<<<<<<< HEAD
 - Implementação de circuitbreaker ao chamar as dependências do ms-aluno, utilizando a biblioteca do `resilience4j`
