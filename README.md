@@ -32,10 +32,11 @@ Além disso, na raiz no projeto foi criado um arquivo docker-compose.yml, para f
 ### Como testar ?
 Aguarde a aplicação subir, e registrar todos os serviços no eureka-server.\
 Para visualizar se está tudo ok, pode acessar: **`http://localhost:8761`**\
-Para testar os serviços, realize uma chamada ao gateway da aplicação.\
+Para testar os serviços, realize uma chamada ao gateway da aplicação.
 
 > **GET** **`http://localhost:8080/alunos/v1/1`**
 > **Via Browser** **`http://localhost:9411/zipkin`**
 
 ### Bônus
+<<<<<<< HEAD
 - Implementação de circuitbreaker ao chamar as dependências do ms-aluno, utilizando a biblioteca do `resilience4j`
