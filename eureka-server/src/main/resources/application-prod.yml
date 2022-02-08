@@ -4,6 +4,8 @@ spring:
 server:
   port: 8761
 eureka:
+  server:
+    wait-time-in-ms-when-sync-empty: 0
   instance:
     hostname: localhost
   client:
