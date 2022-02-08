@@ -30,11 +30,10 @@ Além disso, na raiz no projeto foi criado um arquivo docker-compose.yml, para f
 - Na raiz do projeto, execute **`docker-compose up`**, para criar as imagens e realizar o deploy
 
 ### Como testar ?
-Aguarde a aplicação subir, e registrar todos os serviços no eureka-server.\
-Para visualizar se está tudo ok, pode acessar: **`http://localhost:8761`**\
-Para testar os serviços, realize uma chamada ao gateway da aplicação.
+Antes de acessar a "Gateway API", aguarde a aplicação subir e, registrar todos os serviços no eureka-server.
 
-> **GET** **`http://localhost:8080/alunos/v1/1`**
+> **Eureka Server** **`http://localhost:8761`**
 
-### Bônus
-- Implementação de circuitbreaker ao chamar as dependências do ms-aluno, utilizando a biblioteca do `resilience4j`
+> **Gateway API** **`http://localhost:8080/alunos/v1/1`**
+
+> **Zipkin** **`http://localhost:9411/zipkin`**
