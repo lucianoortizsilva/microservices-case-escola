@@ -1,8 +1,7 @@
 spring:
-  application:
-    name: escola-gateway
-server:
-  port: 8080
+  zipkin:
+    enabled: true
+    baseUrl: http://zipkin-server:9411
 eureka:
   instance:
     prefer-ip-address: true
@@ -11,10 +10,3 @@ eureka:
     registerWithEureka: true
     serviceUrl:
       defaultZone: http://eureka-server:8761/eureka/
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 1800000
-        loggerLevel: basic

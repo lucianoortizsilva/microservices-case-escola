@@ -1,12 +1,7 @@
 spring:
-  application:
-    name: ms-aluno
-  cloud:
-    circuitbreaker:
-      resilience4j:
-        enabled: true  
-server:
-  port: 8081
+  zipkin:
+    enabled: true
+    baseUrl: http://zipkin-server:9411
 eureka:
   instance:
     prefer-ip-address: true

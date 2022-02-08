@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lucianoortizsilva.commom.Aluno;
 import com.lucianoortizsilva.commom.Boletim;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping(value = "/alunos")
 public class AlunoController {
@@ -23,12 +26,14 @@ public class AlunoController {
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}")
 	public Aluno getById(@PathVariable(name = "id") final Long id) {
+		log.info("GET > /alunos/{}", id);
 		return alunoService.getAlunoById(id);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/{id}/boletim")
 	public List<Boletim> getBoletimByAluno(@PathVariable(name = "id") final Long id) {
+		log.info("GET > /alunos/{}/boletim", id);
 		return alunoService.getBoletimByAluno(id);
 	}
 

@@ -32,13 +32,18 @@ class AlunoService {
 	}
 
 	private String getNomeAlunoById(final Long idAluno) {
-		return alunoRepository.findAll().stream().filter(aluno -> aluno.getId().equals(idAluno)).map(Aluno::getNome)
+		return alunoRepository.findAll()
+				.stream()
+				.filter(aluno -> aluno.getId().equals(idAluno))
+				.map(Aluno::getNome)
 				.findFirst().orElse(StringUtils.EMPTY);
 	}
 
 	Aluno getAlunoById(final Long idAluno) {
-		return alunoRepository.findAll().stream().filter(aluno -> aluno.getId().equals(idAluno)).findFirst()
-				.orElse(null);
+		return alunoRepository.findAll()
+				.stream()
+				.filter(aluno -> aluno.getId().equals(idAluno))
+				.findFirst().orElse(null);
 	}
 
 }

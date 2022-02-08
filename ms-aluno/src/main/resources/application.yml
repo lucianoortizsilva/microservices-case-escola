@@ -1,12 +1,16 @@
+server:
+  port: 8081
 spring:
   application:
     name: ms-aluno
+  sleuth:
+    enabled: true
+    sampler:
+      probability: 1
   cloud:
     circuitbreaker:
       resilience4j:
         enabled: true  
-server:
-  port: 8081
 eureka:
   instance:
     prefer-ip-address: true
@@ -15,3 +19,17 @@ eureka:
     registerWithEureka: true
     serviceUrl:
       defaultZone: ${URI_EUREKA_SERVER:http://localhost:8761/eureka}
+logging:
+  level:
+    org:
+    springframework:
+      web:
+      servlet:
+        DispatcherServlet: DEBUG      
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 60000
+        readTimeout: 120000
+        loggerLevel: basic

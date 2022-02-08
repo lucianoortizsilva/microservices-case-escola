@@ -1,7 +1,7 @@
 ### Tech Stack
 - Java 8+
 - Spring Boot
-- Maven
+- [Zipkin](https://zipkin.io/)
 - Docker
 
 ### O que é ?
@@ -35,7 +35,7 @@ Para visualizar se está tudo ok, pode acessar: **`http://localhost:8761`**\
 Para testar os serviços, realize uma chamada ao gateway da aplicação.\
 
 > **GET** **`http://localhost:8080/alunos/v1/1`**
+> **Via Browser** **`http://localhost:9411/zipkin`**
 
 ### Bônus
 - Implementação de circuitbreaker ao chamar as dependências do ms-aluno, utilizando a biblioteca do `resilience4j`
-- Implementação de cache, utilizando @Cacheable

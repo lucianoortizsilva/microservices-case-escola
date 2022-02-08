@@ -11,12 +11,10 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.stereotype.Service;
 
-import com.lucianoortizsilva.aluno.config.CacheConstant;
 import com.lucianoortizsilva.commom.Avaliacao;
 import com.lucianoortizsilva.commom.Boletim;
 import com.lucianoortizsilva.commom.Boletim.Lancamento;
@@ -34,16 +32,21 @@ public class AvaliacaoService {
 	@Autowired
 	private AvaliacaoClient avaliacaoClient;
 
-	@Cacheable(cacheNames = CacheConstant.CACHE_AVALIACOES, key = "#idAluno", unless = "#result?.size() == 0")
+	
+	
 	public Optional<List<Avaliacao>> getAvaliacoesPor(final Long idAluno) {
 		final CircuitBreaker circuitBreaker = this.circuitBreakerFactory.create("circuitbreaker-avaliacao");
 		return circuitBreaker.run(() -> this.avaliacaoClient.getAvaliacoesByAlunoId(idAluno), throwable -> getAvaliacoesDefault());
 	}
 
+	
+	
 	private Optional<List<Avaliacao>> getAvaliacoesDefault() {
 		return Optional.of(Collections.emptyList());
 	}
 
+	
+	
 	public List<Boletim> createBoletimTo(final String nomeAluno, final List<Avaliacao> avaliacoes) {
 		Map<String, List<Avaliacao>> avaliacoesAgrupadasPorTrimestre = agruparAvaliacoesPorTrimestre(avaliacoes);
 		List<Boletim> response = new ArrayList<>();
@@ -56,6 +59,8 @@ public class AvaliacaoService {
 		return response;
 	}
 
+	
+	
 	private Boletim createBoletimWith(final String nomeAluno, final String trimestre, final List<Avaliacao> avaliacoesPorPerido) {
 		final Boletim response = new Boletim();
 		response.setPeriodo(trimestre);
@@ -64,6 +69,8 @@ public class AvaliacaoService {
 		return response;
 	}
 
+	
+	
 	private List<Lancamento> getLancamentos(final List<Avaliacao> avaliacoesPorPerido) {
 		final Iterator<Avaliacao> it = avaliacoesPorPerido.iterator();
 		final List<Lancamento> lancamentos = new ArrayList<>();
@@ -75,11 +82,15 @@ public class AvaliacaoService {
 		return lancamentos;
 	}
 
+	
+	
 	private static Lancamento criarLancamentoPara(final String nomeProfessor, final Avaliacao avaliacao) {
 		return Lancamento.builder().disciplina(avaliacao.getDisciplina()).nomeProfessor(nomeProfessor).valor(avaliacao.getNota()).build();
 
 	}
 
+	
+	
 	private static Map<String, List<Avaliacao>> agruparAvaliacoesPorTrimestre(final List<Avaliacao> avaliacoes) {
 		return avaliacoes.stream().collect(Collectors.groupingBy(Avaliacao::getTrimestre, Collectors.mapping(Function.identity(), Collectors.toList())));
 	}
