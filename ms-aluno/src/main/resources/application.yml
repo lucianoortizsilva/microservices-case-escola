@@ -33,3 +33,8 @@ feign:
         connectTimeout: 60000
         readTimeout: 120000
         loggerLevel: basic
+info:
+  app:
+    name: ms-aluno
+    description: Microservices Aluno
+    version: "@project.version@"

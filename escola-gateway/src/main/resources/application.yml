@@ -26,3 +26,8 @@ feign:
         connectTimeout: 5000
         readTimeout: 1800000
         loggerLevel: basic
+info:
+  app:
+    name: escola-gateway
+    description: API Gateway
+    version: "@project.version@"

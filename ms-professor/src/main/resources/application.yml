@@ -25,3 +25,8 @@ logging:
       web:
       servlet:
         DispatcherServlet: DEBUG
+info:
+  app:
+    name: ms-professor
+    description: Microservices Professor
+    version: "@project.version@"
