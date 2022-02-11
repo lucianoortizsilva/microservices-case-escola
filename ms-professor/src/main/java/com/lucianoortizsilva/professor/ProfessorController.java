@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lucianoortizsilva.commom.Professor;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping(value = "/professores")
 public class ProfessorController {
@@ -18,9 +21,10 @@ public class ProfessorController {
 	private ProfessorService service;
 
 	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/{id}")
-	public Professor getById(@PathVariable(name = "id") final Long id) {
-		return service.getProfessorById(id);
+	@GetMapping(value = "/{codigo}")
+	public Professor getByCodigo(@PathVariable(name = "codigo") final String codigo) {
+		log.info("[ms-professor] GET > /professores/{}", codigo);
+		return service.getProfessorByCodigo(codigo);
 	}
 
 }

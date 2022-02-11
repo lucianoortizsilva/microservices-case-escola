@@ -1,20 +1,22 @@
 package com.lucianoortizsilva.commom;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Avaliacao {
 
-	private Long idAluno;
-	private Long idProfessor;
+	private String matriculaAluno;
+	private String codigoProfessor;
 	private Disciplina disciplina;
-	private String nota;
-	private String trimestre;
+	private TrimestreEnum trimestre;
+	private Double nota;
 
 }

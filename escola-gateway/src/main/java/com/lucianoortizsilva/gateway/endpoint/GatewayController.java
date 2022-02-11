@@ -1,8 +1,5 @@
 package com.lucianoortizsilva.gateway.endpoint;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +18,10 @@ public class GatewayController {
 	@Autowired
 	private AlunoClientV1 alunoClientV1;
 
-	@GetMapping(value = "/alunos/v1/{id}/boletim")
-	public ResponseEntity<List<Boletim>> gerarBoletimPara(@PathVariable(name = "id") final Long idAluno) {
-		log.info("GET > /alunos/v1/{}/boletim", idAluno);
-		return ResponseEntity.ok().body(alunoClientV1.getBoletimByAlunoId(idAluno).stream().collect(Collectors.toList()));
+	@GetMapping(value = "/alunos/v1/{matricula}/boletim")
+	public ResponseEntity<Boletim> gerarBoletimByMatriculaAluno(@PathVariable(name = "matricula") final String matricula) {
+		log.info("[escola-gateway] GET > /alunos/v1/{}/boletim", matricula);
+		return ResponseEntity.ok().body(alunoClientV1.getBoletimByMatriculaAluno(matricula));
 	}
 
 }

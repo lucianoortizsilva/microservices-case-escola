@@ -14,9 +14,9 @@ class AlunoRepository {
 	private static List<Aluno> alunos = new ArrayList<>();
 
 	static {
-		alunos.add(new Aluno(1L, "Ortiz"));
-		alunos.add(new Aluno(2L, "Mariana"));
-		alunos.add(new Aluno(3L, "Fernanda"));
+		alunos.add(Aluno.builder().matricula("1").nome("Fulano De Tal").build());
+		alunos.add(Aluno.builder().matricula("2").nome("Beltrano De Tal").build());
+		alunos.add(Aluno.builder().matricula("3").nome("Ciclano De Tal").build());
 	}
 
 	Collection<Aluno> findAll() {

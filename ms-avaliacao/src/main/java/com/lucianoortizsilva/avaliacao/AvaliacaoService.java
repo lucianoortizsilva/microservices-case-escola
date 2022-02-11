@@ -15,11 +15,11 @@ public class AvaliacaoService {
 	@Autowired
 	private AvaliacaoRepository respository;
 
-	List<Avaliacao> findAvaliacoesByAlunoId(final Long idAluno) {
+	List<Avaliacao> findAvaliacoesByMatriculaAluno(final String matricula) {
 		final List<Avaliacao> avaliacoesByAluno = new ArrayList<>();
 		final List<Avaliacao> avaliacoesAll = this.respository.findAll().stream().collect(Collectors.toList());
 		for (final Avaliacao avaliacao : avaliacoesAll) {
-			if (avaliacao.getIdAluno().equals(idAluno)) {
+			if (avaliacao.getMatriculaAluno().equalsIgnoreCase(matricula)) {
 				avaliacoesByAluno.add(avaliacao);
 			}
 		}

@@ -11,10 +11,9 @@ class ProfessorService {
 	@Autowired
 	private ProfessorRepository repository;
 
-	Professor getProfessorById(Long id) {
-		return repository.findAll()
-				.stream()
-				.filter(professor -> professor.getId().equals(id))
+	Professor getProfessorByCodigo(String codigo) {
+		return repository.findAll().stream()
+				.filter(p -> p.getCodigo().equalsIgnoreCase(codigo))
 				.findFirst().orElse(null);
 	}
 

@@ -1,5 +1,14 @@
 package com.lucianoortizsilva.avaliacao;
 
+import static com.lucianoortizsilva.commom.Disciplina.FISICA;
+import static com.lucianoortizsilva.commom.Disciplina.MATEMATICA;
+import static com.lucianoortizsilva.commom.Disciplina.PEDAGOGIA;
+import static com.lucianoortizsilva.commom.Disciplina.PORTUGUES;
+import static com.lucianoortizsilva.commom.Disciplina.QUIMICA;
+import static com.lucianoortizsilva.commom.TrimestreEnum.UM;
+import static com.lucianoortizsilva.commom.TrimestreEnum.DOIS;
+import static com.lucianoortizsilva.commom.TrimestreEnum.TRES;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -7,34 +16,37 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.lucianoortizsilva.commom.Avaliacao;
-import com.lucianoortizsilva.commom.Disciplina;
 
 @Repository
 public class AvaliacaoRepository {
 
 	private static List<Avaliacao> avaliacoes = new ArrayList<>();
-
-	private static final String TRIMESTRE_1_2021 = "Trimestre 1 - 2020";
-	private static final String TRIMESTRE_2_2021 = "Trimestre 2 - 2020";
-	private static final String TRIMESTRE_3_2021 = "Trimestre 3 - 2020";
-	private static final String TRIMESTRE_4_2021 = "Trimestre 4 - 2020";
-
+	private static final String MATRICULA_ALUNO = "1";
+	
+	private static final String PROFESSOR_1 = "1";
+	private static final String PROFESSOR_2 = "2";
+	private static final String PROFESSOR_3 = "3";
+	private static final String PROFESSOR_4 = "4";
+	private static final String PROFESSOR_5 = "5";
+	
 	static {
-		avaliacoes.add(new Avaliacao(1L, 1L, Disciplina.FISICA, "A", TRIMESTRE_1_2021));
-		avaliacoes.add(new Avaliacao(1L, 2L, Disciplina.PEDAGOGIA, "B", TRIMESTRE_1_2021));
-		avaliacoes.add(new Avaliacao(1L, 3L, Disciplina.QUIMICA, "C", TRIMESTRE_1_2021));
-
-		avaliacoes.add(new Avaliacao(1L, 1L, Disciplina.FISICA, "B", TRIMESTRE_2_2021));
-		avaliacoes.add(new Avaliacao(1L, 2L, Disciplina.PEDAGOGIA, "B", TRIMESTRE_2_2021));
-		avaliacoes.add(new Avaliacao(1L, 3L, Disciplina.QUIMICA, "A", TRIMESTRE_2_2021));
-
-		avaliacoes.add(new Avaliacao(1L, 1L, Disciplina.FISICA, "C", TRIMESTRE_3_2021));
-		avaliacoes.add(new Avaliacao(1L, 2L, Disciplina.PEDAGOGIA, "A", TRIMESTRE_3_2021));
-		avaliacoes.add(new Avaliacao(1L, 3L, Disciplina.QUIMICA, "A", TRIMESTRE_3_2021));
-
-		avaliacoes.add(new Avaliacao(1L, 1L, Disciplina.FISICA, "A", TRIMESTRE_4_2021));
-		avaliacoes.add(new Avaliacao(1L, 2L, Disciplina.PEDAGOGIA, "A", TRIMESTRE_4_2021));
-		avaliacoes.add(new Avaliacao(1L, 3L, Disciplina.QUIMICA, "B", TRIMESTRE_4_2021));
+		avaliacoes.add(Avaliacao.builder().trimestre(UM).matriculaAluno(MATRICULA_ALUNO).disciplina(MATEMATICA).codigoProfessor(PROFESSOR_1).nota(9.0).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(UM).matriculaAluno(MATRICULA_ALUNO).disciplina(PEDAGOGIA).codigoProfessor(PROFESSOR_2).nota(8.6).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(UM).matriculaAluno(MATRICULA_ALUNO).disciplina(PORTUGUES).codigoProfessor(PROFESSOR_3).nota(7.0).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(UM).matriculaAluno(MATRICULA_ALUNO).disciplina(QUIMICA).codigoProfessor(PROFESSOR_4).nota(6.0).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(UM).matriculaAluno(MATRICULA_ALUNO).disciplina(FISICA).codigoProfessor(PROFESSOR_5).nota(6.1).build());
+		
+		avaliacoes.add(Avaliacao.builder().trimestre(DOIS).matriculaAluno(MATRICULA_ALUNO).disciplina(MATEMATICA).codigoProfessor(PROFESSOR_1).nota(6.3).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(DOIS).matriculaAluno(MATRICULA_ALUNO).disciplina(PEDAGOGIA).codigoProfessor(PROFESSOR_2).nota(5.6).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(DOIS).matriculaAluno(MATRICULA_ALUNO).disciplina(PORTUGUES).codigoProfessor(PROFESSOR_3).nota(9.1).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(DOIS).matriculaAluno(MATRICULA_ALUNO).disciplina(QUIMICA).codigoProfessor(PROFESSOR_4).nota(4.4).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(DOIS).matriculaAluno(MATRICULA_ALUNO).disciplina(FISICA).codigoProfessor(PROFESSOR_5).nota(6.2).build());
+		
+		avaliacoes.add(Avaliacao.builder().trimestre(TRES).matriculaAluno(MATRICULA_ALUNO).disciplina(MATEMATICA).codigoProfessor(PROFESSOR_1).nota(8.7).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(TRES).matriculaAluno(MATRICULA_ALUNO).disciplina(PEDAGOGIA).codigoProfessor(PROFESSOR_2).nota(6.5).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(TRES).matriculaAluno(MATRICULA_ALUNO).disciplina(PORTUGUES).codigoProfessor(PROFESSOR_3).nota(5.2).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(TRES).matriculaAluno(MATRICULA_ALUNO).disciplina(QUIMICA).codigoProfessor(PROFESSOR_4).nota(9.0).build());
+		avaliacoes.add(Avaliacao.builder().trimestre(TRES).matriculaAluno(MATRICULA_ALUNO).disciplina(FISICA).codigoProfessor(PROFESSOR_5).nota(6.6).build());
 	}
 
 	Collection<Avaliacao> findAll() {

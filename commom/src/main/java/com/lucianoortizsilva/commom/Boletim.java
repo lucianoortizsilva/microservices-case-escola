@@ -1,10 +1,9 @@
 package com.lucianoortizsilva.commom;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,24 +12,41 @@ public class Boletim {
 
 	@Getter
 	@Setter
-	private String nomeAluno;
+	private String aluno;
 
 	@Getter
 	@Setter
-	private String periodo;
+	private String curso;
 
 	@Getter
-	private Set<Lancamento> lancamentos = new HashSet<>();
+	private List<Trimestre> trimestres = new ArrayList<>();
 
+	
+	
 	@Getter
 	@Setter
-	@Builder
 	@NoArgsConstructor
 	@AllArgsConstructor
-	public static class Lancamento {
-		private String nomeProfessor;
-		private Disciplina disciplina;
-		private String valor;
+	public static class Trimestre {
+		@Getter
+		@Setter
+		private String descricao;
+		@Getter
+		private List<Detalhe> detalhes = new ArrayList<>();
 	}
 
+	
+	
+	@Getter
+	@Setter
+	@NoArgsConstructor
+	@AllArgsConstructor
+	public static class Detalhe {
+		private String professor;
+		private String disciplina;
+		private Double nota;
+	}
+
+	
+	
 }

@@ -2,8 +2,6 @@ package com.lucianoortizsilva.commom;
 
 public enum Disciplina {
 
-	FISICA, //
-	QUIMICA, //
-	PEDAGOGIA;//
+	FISICA, QUIMICA, PEDAGOGIA, MATEMATICA, PORTUGUES
 
 }

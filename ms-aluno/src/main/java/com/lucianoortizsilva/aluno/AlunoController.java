@@ -1,7 +1,5 @@
 package com.lucianoortizsilva.aluno;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,17 +22,19 @@ public class AlunoController {
 	private AlunoService alunoService;
 
 	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/{id}")
-	public Aluno getById(@PathVariable(name = "id") final Long id) {
-		log.info("GET > /alunos/{}", id);
-		return alunoService.getAlunoById(id);
+	@GetMapping(value = "/{matricula}")
+	public Aluno getAlunoByMatricula(@PathVariable(name = "matricula") final String matricula) {
+		log.info("[ms-aluno] GET > /alunos/v1/{}", matricula);
+		return alunoService.getAlunoByMatricula(matricula);
 	}
-
+	
+	
+	
 	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/{id}/boletim")
-	public List<Boletim> getBoletimByAluno(@PathVariable(name = "id") final Long id) {
-		log.info("GET > /alunos/{}/boletim", id);
-		return alunoService.getBoletimByAluno(id);
+	@GetMapping(value = "/{matricula}/boletim")
+	public Boletim getBoletimByMatriculaAluno(@PathVariable(name = "matricula") final String matricula) {
+		log.info("[ms-aluno] GET > /alunos/v1/{}/boletim", matricula);
+		return alunoService.getBoletimByMatriculaAluno(matricula);
 	}
 
 }

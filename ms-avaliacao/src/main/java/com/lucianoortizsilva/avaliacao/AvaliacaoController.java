@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lucianoortizsilva.commom.Avaliacao;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping(value = "/avaliacoes")
 public class AvaliacaoController {
@@ -20,9 +23,10 @@ public class AvaliacaoController {
 	private AvaliacaoService avaliacaoService;
 
 	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/aluno/{id}")
-	public List<Avaliacao> getById(@PathVariable(name = "id") final Long id) {
-		return avaliacaoService.findAvaliacoesByAlunoId(id);
+	@GetMapping(value = "/aluno/{matricula}")
+	public List<Avaliacao> getAvaliacoesByMatriculaAluno(@PathVariable(name = "matricula") final String matricula) {
+		log.info("[ms-avaliacao] GET > /avaliacoes/aluno/{}", matricula);
+		return avaliacaoService.findAvaliacoesByMatriculaAluno(matricula);
 	}
 
 }

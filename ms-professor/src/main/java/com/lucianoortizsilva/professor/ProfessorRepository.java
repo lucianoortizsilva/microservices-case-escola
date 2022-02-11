@@ -11,12 +11,14 @@ import com.lucianoortizsilva.commom.Professor;
 @Repository
 class ProfessorRepository {
 
-	private static List<Professor> professores = new ArrayList<>(3);
+	private static List<Professor> professores = new ArrayList<>(5);
 
 	static {
-		professores.add(new Professor(1L, "Albert Einstein"));
-		professores.add(new Professor(2L, "Johann Heinrich Pestalozzi"));
-		professores.add(new Professor(3L, "Marie Curie"));
+		professores.add(Professor.builder().codigo("1").nome("João").build());
+		professores.add(Professor.builder().codigo("2").nome("Maicon").build());
+		professores.add(Professor.builder().codigo("3").nome("Leticia").build());
+		professores.add(Professor.builder().codigo("4").nome("Alfredo").build());
+		professores.add(Professor.builder().codigo("5").nome("Fernanda").build());
 	}
 
 	Collection<Professor> findAll() {
